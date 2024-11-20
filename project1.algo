@@ -1,0 +1,74 @@
+
+// verify if the word ends with a . and doesnt have dubble spaces //
+FUNCTION verify(VAR ch:STRING) : BOOLEAN
+VAR
+    s,ok:=BOOLEAN
+    en:= lenght(ch)-1
+BEGIN
+    p:=ch.FIND("  ",ch)
+    WHILE (p!=-1 and en=".") DO
+        ok:=True
+    END_WHILE
+    RETURN OK.
+END
+
+// number of caracters //
+FUNCTION char_nb(VAR ch:STRING,) : INTEGER
+VAR
+    x,m,n:INTEGER
+    m:=0
+BEGIN
+    ch:=ch(,lenght(ch)-2) + " "
+    WHILE (ch.FIND(" ",ch)!=-1) DO
+        w:= ch.FIND(" ",ch)
+        n=ch(0,w).length
+        ch:=ch(w+1,)
+        m:=m+n
+    END_WHILE
+    RETURN m
+END
+
+// number of words //
+FUNCTION nb_words(VAR ch:STRING) : INTEGER
+VAR 
+    x: INTEGER
+    x:=0
+BEGIN
+    ch:=ch(,lenght(ch)-2) + " "
+    WHILE (ch.FIND(" ",ch)!=-1) DO
+        w:= ch.FIND(" ",ch)
+        x:=x+1
+        ch:=ch(w+1,)
+    END_WHILE
+    RETURN x
+END
+
+// number of vowels //
+FUNCTION vowel(VAR ch:STRING) : INTEGER
+VAR
+    i,x: INTEGER
+    i,x:=0
+BEGIN
+    FOR (FROM i TO lenght(ch)-1) DO
+        SWITCH (ch[i]) DO
+            case a : x:=x+1 ; BREAK;
+            case o : x:=x+1 ; BREAK;
+            case i : x:=x+1 ; BREAK;
+            case e : x:=x+1 ; BREAK;
+            case u : x:=x+1 ; BREAK;
+            default : BREAK;
+        END_IF
+    END_FOR
+    RETURN x
+END
+
+// PP //
+ALGORITHM  read_sentence
+VAR
+    ch: STRING
+BEGIN
+    Read(ch)
+    Write("The length of the sentence :",char_nb(ch))
+    Write("The number of words in the sentence :",nb_words(ch))
+    Write("The number of vowels in the sentence :",vowel(ch))
+END
